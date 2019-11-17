@@ -1,0 +1,93 @@
+[
+  {
+    "_id": "Costs-chart",
+    "_type": "visualization",
+    "_source": {
+      "title": "Costs chart",
+      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"amount\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"type.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"payment-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Total-Costs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Total Costs",
+      "visState": "{\"type\":\"metric\",\"params\":{\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"amount\"}}],\"listeners\":{}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"payment-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Costs-Bar-Chart",
+    "_type": "visualization",
+    "_source": {
+      "title": "Costs Bar Chart",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"amount\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"type.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"payment-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Message-Sizes",
+    "_type": "visualization",
+    "_source": {
+      "title": "Message Sizes",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"msg_size\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"parsed_date\",\"interval\":\"d\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"is_from_me\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"message-*\",\"query\":{\"query_string\":{\"query\":\"id:\\\\+12068518019 OR id:jennifer*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Messages",
+    "_type": "visualization",
+    "_source": {
+      "title": "Messages",
+      "visState": "{\"aggs\":[{\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"id\":\"2\",\"params\":{\"customInterval\":\"2h\",\"extended_bounds\":{},\"field\":\"parsed_date\",\"interval\":\"d\",\"min_doc_count\":1},\"schema\":\"segment\",\"type\":\"date_histogram\"},{\"id\":\"3\",\"params\":{\"field\":\"is_from_me\",\"order\":\"desc\",\"orderBy\":\"1\",\"size\":5},\"schema\":\"group\",\"type\":\"terms\"}],\"listeners\":{},\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"radiusRatio\":9,\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"showCircles\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{}},\"type\":\"line\"}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"message-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"id:\\\\+12068518019 OR id:jennifer*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Messages-Bar",
+    "_type": "visualization",
+    "_source": {
+      "title": "Messages Bar",
+      "visState": "{\"aggs\":[{\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"id\":\"2\",\"params\":{\"customInterval\":\"2h\",\"extended_bounds\":{},\"field\":\"parsed_date\",\"interval\":\"d\",\"min_doc_count\":1},\"schema\":\"segment\",\"type\":\"date_histogram\"},{\"id\":\"3\",\"params\":{\"field\":\"is_from_me\",\"order\":\"desc\",\"orderBy\":\"1\",\"size\":5},\"schema\":\"group\",\"type\":\"terms\"}],\"listeners\":{},\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"grouped\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"type\":\"histogram\"}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"message-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"id:\\\\+12068518019 OR id:jennifer*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Message-Size-Pie",
+    "_type": "visualization",
+    "_source": {
+      "title": "Message Size Pie",
+      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"msg_size\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"is_from_me\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"message-*\",\"query\":{\"query_string\":{\"query\":\"id:\\\\+12068518019 OR id:jennifer*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  }
+]

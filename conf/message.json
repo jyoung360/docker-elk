@@ -1,0 +1,67 @@
+{
+  "template" : "message-*",
+  "settings" : {
+    "index.refresh_interval" : "5s"
+  },
+  "mappings" : {
+    "message" : {
+        "properties" : {
+            "parsed_date" : {
+                "type" : "date",
+                "format" : "yyyy-MM-dd HH:mm:ss z"
+            },
+            "read_date" : {
+                "type" : "date",
+                "format" : "yyyy-MM-dd HH:mm:ss z"
+            },
+            "delivered_date" : {
+                "type" : "date",
+                "format" : "yyyy-MM-dd HH:mm:ss z"
+            },
+            "msg_size" : {"type" : "integer"},
+            "handle_id" : {"type" : "integer"},
+            "is_delivered" : {"type" : "boolean" },
+            "is_finished" : {"type" : "boolean" },
+            "is_emote" : {"type" : "boolean" },
+            "is_from_me" : {"type" : "boolean" },
+            "is_empty" : {"type" : "boolean" },
+            "is_delayed" : {"type" : "boolean" },
+            "is_auto_reply" : {"type" : "boolean" },
+            "is_prepared" : {"type" : "boolean" }
+        }
+    },
+    "_default_" : {
+       "_all" : {"enabled" : true, "omit_norms" : true},
+       "dynamic_templates" : [ {
+         "message_field" : {
+           "match" : "message",
+           "match_mapping_type" : "string",
+           "mapping" : {
+             "type" : "string", "index" : "analyzed", "omit_norms" : true
+           }
+         }
+       }, {
+         "string_fields" : {
+           "match" : "*",
+           "match_mapping_type" : "string",
+           "mapping" : {
+             "type" : "string", "index" : "analyzed", "omit_norms" : true,
+               "fields" : {
+                 "raw" : {"type": "string", "index" : "not_analyzed", "ignore_above" : 256}
+               }
+           }
+         }
+       } ],
+       "properties" : {
+         "@version": { "type": "string", "index": "not_analyzed" },
+         "geoip"  : {
+           "type" : "object",
+             "dynamic": true,
+             "properties" : {
+               "location" : { "type" : "geo_point" }
+             }
+         }
+       }
+    }
+  }
+}

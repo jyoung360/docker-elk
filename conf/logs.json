@@ -1,0 +1,27 @@
+{
+    "logs" : {
+        "properties" : {
+            "parsed_date" : {
+                "type" : "date",
+                "format" : "yyyy-MM-dd HH:mm:ss"
+            },
+            "read_date" : {
+                "type" : "date",
+                "format" : "yyyy-MM-dd HH:mm:ss"
+            },
+            "delivered_date" : {
+                "type" : "date",
+                "format" : "yyyy-MM-dd HH:mm:ss"
+            },
+            "handle_id" : {"type" : "integer"},
+            "is_delivered" : {"type" : "boolean" },
+            "is_finished" : {"type" : "boolean" },
+            "is_emote" : {"type" : "boolean" },
+            "is_from_me" : {"type" : "boolean" },
+            "is_empty" : {"type" : "boolean" },
+            "is_delayed" : {"type" : "boolean" },
+            "is_auto_reply" : {"type" : "boolean" },
+            "is_prepared" : {"type" : "boolean" }
+        }
+    }
+}

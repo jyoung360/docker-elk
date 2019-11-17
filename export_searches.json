@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "Foo",
+    "_type": "search",
+    "_source": {
+      "title": "Foo",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "text"
+      ],
+      "sort": [
+        "parsed_date",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"message-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[],\"query\":{\"query_string\":{\"query\":\"(id:\\\\+phone OR id:user*) AND text:foo\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  }
+]
